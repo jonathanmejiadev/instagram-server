@@ -12,7 +12,7 @@ export const register = async (req, res) => {
             updatedAt: new Date()
         };
         const savedUser = await authService.register(user);
-        res.status(201).json({ success: true, msg: 'Account has been registered ', data: savedUser });
+        res.status(201).json({ success: true, data: savedUser });
     } catch (err) {
         console.log(err);
         res.status(500).json({ success: false, msg: 'Server Internal Error' });
