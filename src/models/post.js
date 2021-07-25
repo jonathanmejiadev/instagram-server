@@ -13,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
 
       this.belongsTo(User, { foreignKey: 'userId' })
     }
+
+    toJSON() {
+      return { ...this.get(), id: undefined }
+    }
+
   };
   Post.init({
     uuid: {
