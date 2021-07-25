@@ -15,10 +15,24 @@ export const register = async (req, res) => {
         res.status(201).json({ success: true, data: savedUser });
     } catch (err) {
         console.log(err);
-        res.status(500).json({ success: false, msg: 'Server Internal Error' });
+        res.status(500).json({
+            success: false,
+            message: 'Server Internal Error'
+        });
     }
 };
 
-export const login = (req, res) => {
-    res.status(200).json({ success: true, msg: 'Account has been logged successfully ' })
+export const login = async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const access_token = await authService.login(username, password)
+        res.status(200).json({
+            success: true,
+            message: 'Account has been logged in successfully',
+            access_token,
+            token_type: 'Bearer'
+        })
+    } catch (err) {
+        res.json(err);
+    }
 };

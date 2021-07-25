@@ -3,6 +3,7 @@ require('dotenv').config();
 module.exports = {
     PORT: process.env.PORT || 3001,
     prefix: '/v1',
+    SECRET: process.env.JWTSECRET,
     log: {
         level: process.env.LOG_LEVEL
     },
