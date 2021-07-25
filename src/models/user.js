@@ -45,8 +45,16 @@ module.exports = (sequelize, DataTypes) => {
     },
     profilePhoto: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    }
   }, {
     sequelize,
     tableName: 'users',
